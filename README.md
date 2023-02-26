@@ -10,11 +10,11 @@ tp2 du cours inf136
 ## pour push des changements apportés au code:
 - clic droit, puis "Git Bash Here" DANS le dossier 'inf136_tp2'
 - entrer dans l'ordre les lignes suivantes:
-	-git add --all
-	-git commit -m "votre message"
-	-git push
+-  git add --all
+-  git commit -m "votre message"
+-  git push
 	
 ## pour pull le répertoire du git
 - clic droit, puis "Git Bash Here" DANS le dossier 'inf136_tp2'
 - entrer la ligne suivante:
-	-git pull
+- git pull
