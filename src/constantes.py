@@ -6,10 +6,6 @@ ORDINATEUR = 1
 FLOTTE_TAILLE_MIN = 4
 FLOTTE_TAILLE_MAX = 6
 
-# Index de position d'un bateau
-I_TIR = 0
-J_TIR = 1
-
 # Dimensions de la grille de jeu
 LARGEUR_GRILLE = 10
 HAUTEUR_GRILLE = 10
@@ -50,3 +46,4 @@ VIE_NAVIRES = {PORTE_AVION: VIE_PORTE_AVION,
                CROISEUR: VIE_CROISEUR,
                CONTRE_TORPILLEUR: VIE_CONTRE_TORPILLEUR,
                TORPILLEUR: VIE_TORPILLEUR}
+
