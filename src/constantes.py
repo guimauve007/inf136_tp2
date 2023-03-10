@@ -1,3 +1,5 @@
+
+
 # Identifiants du joueur courant
 JOUEUR = 0
 ORDINATEUR = 1
