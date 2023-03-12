@@ -5,6 +5,10 @@ MUR_COIN = 6
 MUR_GAUCHE_DROIT = 4
 MUR_HAUT_BAS = 5
 CELLULE_VIDE = 0
+LARGEUR_CARACTERES = 3
+DEBUT_CHAINE = 1
+PREMIERE_LIGNE = 0
+PREMIERE_COLONNE = 0
 
 
 def grille_initialiser(hauteur, largeur):
@@ -24,24 +28,22 @@ def grille_initialiser(hauteur, largeur):
     ligne = [CELLULE_VIDE] * largeur
 
     # Index des lignes
-    PREMIERE_LIGNE = 0
-    DERNIERE_LIGNE = hauteur - 1
+    derniere_ligne = hauteur - 1
 
     # Index des colonnes
-    PREMIERE_COLONNE = 0
-    DERNIERE_COLONNE = largeur - 1
+    derniere_colonne = largeur - 1
 
     # Ajouter les lignes et les colonnes une par une.
     for i in range(hauteur):
         for j in range(largeur):
-            if i == PREMIERE_LIGNE or i == DERNIERE_LIGNE:
-                if j == PREMIERE_COLONNE or j == DERNIERE_COLONNE:
+            if i == PREMIERE_LIGNE or i == derniere_ligne:
+                if j == PREMIERE_COLONNE or j == derniere_colonne:
                     ligne[j] = MUR_COIN
                 else:
                     ligne[j] = MUR_HAUT_BAS
 
             else:
-                if j == PREMIERE_COLONNE or j == DERNIERE_COLONNE:
+                if j == PREMIERE_COLONNE or j == derniere_colonne:
                     ligne[j] = MUR_GAUCHE_DROIT
                 else:
                     ligne[j] = CELLULE_VIDE
@@ -66,10 +68,10 @@ def grille_dessiner(grille):
     grille_symboles = []
 
     for i in range(len(grille)):
-        ligne = []
+        ligne = ""
         for j in range(len(grille[i])):
-            ligne.append(SYMBOLES_GRILLE[grille[i][j]])
-        grille_symboles.append(ligne.copy())
+            ligne += SYMBOLES_GRILLE[grille[i][j]]
+        grille_symboles.append(ligne)
 
     return grille_symboles
 
@@ -85,14 +87,12 @@ def grille_afficher(grille):
         Rien.
     """
 
-    PREMIERE_LIGNE = 0
-    DERNIERE_LIGNE = len(grille) - 1
-    LARGEUR_GRILLE = len(grille[PREMIERE_LIGNE])
-    DEBUT_CHAINE = 1
+    derniere_ligne = len(grille) - 1
+    largeur_grille = int(len(grille[PREMIERE_LIGNE]) / LARGEUR_CARACTERES)
 
     # Affiche la première ligne
     print("       ", end='')
-    for i in range(DEBUT_CHAINE, LARGEUR_GRILLE - 1):
+    for i in range(DEBUT_CHAINE, largeur_grille - 1):
         print(str(i), end='  ')
 
     # Nouvelle ligne
@@ -104,7 +104,7 @@ def grille_afficher(grille):
         if i == PREMIERE_LIGNE:
             print('   ' + chaine_caracteres.join(grille[i]), end='\n')
 
-        elif i == DERNIERE_LIGNE:
+        elif i == derniere_ligne:
             print('   ' + chaine_caracteres.join(grille[i]), end='\n')
 
         else:
