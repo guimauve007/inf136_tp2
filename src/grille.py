@@ -62,9 +62,7 @@ def grille_initialiser(hauteur, largeur):
                 else:
                     ligne[x] = CELLULE_VIDE
 
-        print(ligne) # marche
-        grille_vierge.append(ligne) # marche pas esti
+        grille_vierge.append(ligne.copy())
 
-    print(grille_vierge)
     # Retourner la grille vierge.
     return grille_vierge
