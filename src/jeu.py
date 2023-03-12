@@ -5,7 +5,6 @@ from constantes import LARGEUR_GRILLE
 from flotte import flotte_calculer_vie
 
 
-
 def jeu_afficher_jouer_courant(identifiant_courant):
 
     if identifiant_courant == JOUEUR:
@@ -24,7 +23,7 @@ def jeu_afficher_jouer_courant(identifiant_courant):
     Retourne  :
        i --> (int) : i représente la hauteur du tir saisit par l'utilisateur
        j --> (int) : j représente la largeur du tir saisit par l'utilisateur
-    """
+"""
 
 
 def jeu_joueur_saisir_position_tir():
@@ -32,6 +31,7 @@ def jeu_joueur_saisir_position_tir():
     # Saisit de la hauteur du tir
     i = input(int('Saisissez la hauteur de votre tir : '))
 
+    # Redemander la saisit si la valeur saisit n'est pas dans la grille de jeux
     #
     while i > HAUTEUR_GRILLE and i > 1:
         i = input(int('Saisissez la hauteur de votre tir : '))
