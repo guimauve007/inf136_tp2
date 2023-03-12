@@ -3,7 +3,11 @@ from navire import navire_obtenir_positions
 from navire import navire_obtenir_vie
 from navire import navire_decrementer_vie
 from random import randint
-from constantes import FLOTTE_TAILLE_MIN, FLOTTE_TAILLE_MAX, I_TIR, J_TIR
+from constantes import FLOTTE_TAILLE_MIN, FLOTTE_TAILLE_MAX
+
+# Index de position d'un bateau
+X_BATEAU = 0
+Y_BATEAU = 1
 
 
 def flotte_generer_aleatoire():
@@ -14,20 +18,19 @@ def flotte_generer_aleatoire():
         Aucuns.
 
     Retourne  :
-        [list] : une flotte de navires aléatoires.
+        [list] : Une flotte de navires aléatoires.
     """
 
-    liste_flotte = []
+    flotte = []
 
-    # Obtenir une quantité de navires à générer.
+    # Obtenir quantité de navires à générer
     taille_flotte = randint(FLOTTE_TAILLE_MIN, FLOTTE_TAILLE_MAX)
 
-    # Ajouter les navires à la flotte.
+    # Ajouter les navires à la flotte
     for i in range(taille_flotte):
-        liste_flotte.append(navire_generer_aleatoire())
+        flotte.append(navire_generer_aleatoire())
 
-    # Retourner la liste créée.
-    return liste_flotte
+    return flotte
 
 
 def flotte_calculer_vie(flotte):
@@ -36,7 +39,6 @@ def flotte_calculer_vie(flotte):
 
     Arguments :
         flotte [list]: Une flotte de navires.
-        liste_flotte.append(navire_generer_aleatoire())
 
     Retourne  :
         (int) : Somme des champs 'vie' des navires de la flotte.
@@ -56,8 +58,8 @@ def flotte_gestionnaire_tir(flotte, i_tir, j_tir):
 
     Arguments :
         flotte [list]: Une flotte de navires.
-        i_tir (int) : La ligne du tir
-        j_tir (int) : La colonne du tir
+        i_tir (int): La ligne du tir
+        j_tir (int): La colonne du tir
 
     Retourne  :
         (bool) : Indicateur de succès du tir à atteindre une cible.
@@ -66,7 +68,7 @@ def flotte_gestionnaire_tir(flotte, i_tir, j_tir):
     for i in range(len(flotte)):
         positions = navire_obtenir_positions(flotte[i])
         for j in range(len(positions)):
-            if (positions[j][I_TIR] == i_tir) & (positions[j][J_TIR] == j_tir):
+            if (positions[j][X_BATEAU] == i_tir) & (positions[j][Y_BATEAU] == j_tir):
                 del positions[j]
                 navire_decrementer_vie(flotte[i])
                 return True

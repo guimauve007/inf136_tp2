@@ -8,10 +8,6 @@ ORDINATEUR = 1
 FLOTTE_TAILLE_MIN = 4
 FLOTTE_TAILLE_MAX = 6
 
-# Index de position d'un bateau
-I_TIR = 0
-J_TIR = 1
-
 # Dimensions de la grille de jeu
 LARGEUR_GRILLE = 10
 HAUTEUR_GRILLE = 10
