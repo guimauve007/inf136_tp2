@@ -3,7 +3,7 @@ from constantes import ORDINATEUR
 from constantes import HAUTEUR_GRILLE
 from constantes import LARGEUR_GRILLE
 from flotte import flotte_calculer_vie
-
+from random import randint
 
 def jeu_afficher_jouer_courant(identifiant_courant):
 
@@ -14,33 +14,62 @@ def jeu_afficher_jouer_courant(identifiant_courant):
         print('C\'est au tour de l\'ordinateur')
 
 
-"""
+def jeu_joueur_saisir_position_tir():
+    """
     Saisit la position du tir du joueur et redemande jusqu'à ce que la saisit soit valide.
 
     Arguments :
         Aucun.
 
     Retourne  :
-       i --> (int) : i représente la hauteur du tir saisit par l'utilisateur
-       j --> (int) : j représente la largeur du tir saisit par l'utilisateur
-"""
-
-
-def jeu_joueur_saisir_position_tir():
+        i --> (int) : i représente la hauteur du tir saisit par l'utilisateur
+        j --> (int) : j représente la largeur du tir saisit par l'utilisateur
+    """
 
     # Saisit de la hauteur du tir
-    i = input(int('Saisissez la hauteur de votre tir : '))
+    i = int(input('Saisissez la hauteur de votre tir : '))
 
     # Redemander la saisit si la valeur saisit n'est pas dans la grille de jeux
-    #
-    while i > HAUTEUR_GRILLE and i > 1:
-        i = input(int('Saisissez la hauteur de votre tir : '))
+    # la hauteur limite supérieur de la grille de jeux est HAUTEUR GRILLE
+    # la hauteur limite inférieur de la grille est 1
+    while i > HAUTEUR_GRILLE and i >= 1:
+        i = int(input('Saisissez la hauteur de votre tir : '))
 
-    j = input(int('Saisissez la largueur de votre tir : '))
+    # Saisit de la largeur du tir
+    j = int(input('Saisissez la largueur de votre tir : '))
 
-    while j > LARGEUR_GRILLE and j > 1:
-        i = input(int('Saisissez la largueur de votre tir : '))
+    # Redemander la saisit si la valeur saisit n'est pas dans la grille de jeux
+    # la largeur limite supérieur de la grille de jeux est HAUTEUR GRILLE
+    # la largeur limite inférieur de la grille est 1
+    while j > LARGEUR_GRILLE and j >= 1:
+        i = int(input('Saisissez la largueur de votre tir : '))
 
+    # Retourne un tuple représentent les coordonnées (x, y) du tir du joueur
+    return i, j
+
+
+def jeu_ordinateur_saisir_position_tir():
+    """
+    Génère une position de tir aléatoire pour l'ordinateur tant que la case ne soit pas vide.
+
+    Arguments :
+        Aucun.
+
+    Retourne  :
+        i --> (int) : i représente la hauteur du tir de l'ordinateur
+        j --> (int) : j représente la largeur du tir de l'ordinateur
+    """
+
+    # Génère une première position de tir aléatoire avec les coordonnées (i, j)
+    i = randint(1, HAUTEUR_GRILLE)
+    j = randint(1, LARGEUR_GRILLE)
+
+    # while liste_flotte[i][j] = 0 :
+      #  i = randint(1, HAUTEUR_GRILLE)
+       # j = randint(1, LARGEUR_GRILLE)
+
+
+    # Retourne un tuple représentent les coordonnées (x, y) du tir du joueur
     return i, j
 
 
@@ -85,7 +114,7 @@ def jeu_afficher_vainqueur(flotte_joueur):
     """
 
     # pas sur de cette etape a voir faut il appeler l'autre fonction ou faire une somme
-    if flotte_joueur == 0 :
+    if flotte_joueur == 0:
 
         # Afficher le message vainqueur de l'ordinateur contre le joueur.
         print('C\'est l"ordinateur qui a gagné! Désolé, il faudrait se pratiquer davantage.')
@@ -94,4 +123,3 @@ def jeu_afficher_vainqueur(flotte_joueur):
 
         # Afficher le message vainqueur du joueur contre l'oridnateur.
         print('C\'est le joueur qui a gagné. Félicitations!')
-
