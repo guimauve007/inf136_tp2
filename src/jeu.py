@@ -5,11 +5,25 @@ from constantes import LARGEUR_GRILLE
 from flotte import flotte_calculer_vie
 from random import randint
 
-def jeu_afficher_jouer_courant(identifiant_courant):
 
+def jeu_afficher_jouer_courant(identifiant_courant):
+    """
+    Affiche un message qui indique le joueur courant.
+
+    Arguments :
+        identifiant_courant (int) : indique si c'est le tour de l'ordinateur ou du joueur à jouer
+
+    Retourne :
+        Aucun.
+    """
+
+    # Si identifiant_courant est égal à la constante JOUEUR,
+    # un print indique que c'est le tour au joueur de jouer.
     if identifiant_courant == JOUEUR:
         print('C\'est au tour du joueur')
 
+    # Si identifiant_courant est égal à la constante ORDINATEUR,
+    # un print indique que c'est le tour de l'ORDINATEUR jouer.
     elif identifiant_courant == ORDINATEUR:
         print('C\'est au tour de l\'ordinateur')
 
@@ -66,7 +80,7 @@ def jeu_ordinateur_saisir_position_tir():
 
     # while liste_flotte[i][j] = 0 :
       #  i = randint(1, HAUTEUR_GRILLE)
-       # j = randint(1, LARGEUR_GRILLE)
+        # j = randint(1, LARGEUR_GRILLE)
 
 
     # Retourne un tuple représentent les coordonnées (x, y) du tir du joueur
