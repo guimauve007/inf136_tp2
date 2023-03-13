@@ -1,5 +1,5 @@
 from constantes import SYMBOLES_GRILLE
-
+from random import randint
 # Constantes grille de jeu
 MUR_COIN = 6
 MUR_GAUCHE_DROIT = 4
@@ -103,7 +103,7 @@ def grille_generer_position_aleatoire(grille):
         [tuple]: Une position (i,j) aléatoire
     """
 
-    i= randint(1, (grille[0]/LARGEUR_CARACTERES)-1)
+    i = randint(1, (grille[0]/LARGEUR_CARACTERES)-1)
 
 
 def grille_cellule_est_vide():
