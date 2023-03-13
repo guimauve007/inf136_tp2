@@ -38,7 +38,7 @@ def jeu_joueur_saisir_position_tir():
         i --> (int) : i représente la hauteur du tir saisit par l'utilisateur
         j --> (int) : j représente la largeur du tir saisit par l'utilisateur
     """
-    # test
+
     # Saisit de la hauteur du tir
     i = int(input('Saisissez la hauteur de votre tir : '))
 
