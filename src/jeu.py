@@ -5,8 +5,7 @@ from constantes import LARGEUR_GRILLE
 from flotte import flotte_calculer_vie
 from random import randint
 
-
-def jeu_afficher_jouer_courant(identifiant_courant):
+def jeu_afficher_joueur_courant(identifiant_courant):
     """
     Affiche un message qui indique le joueur courant.
 
@@ -62,7 +61,7 @@ def jeu_joueur_saisir_position_tir():
     return i, j
 
 
-def jeu_ordinateur_saisir_position_tir():
+def jeu_ordinateur_saisir_position_tir(grille):
     """
     Génère une position de tir aléatoire pour l'ordinateur tant que la case ne soit pas vide.
 
@@ -75,15 +74,17 @@ def jeu_ordinateur_saisir_position_tir():
     """
 
     # Génère une première position de tir aléatoire avec les coordonnées (i, j)
-    i = randint(1, HAUTEUR_GRILLE)
-    j = randint(1, LARGEUR_GRILLE)
+    i = randint(0, HAUTEUR_GRILLE-1)
+    j = randint(0, LARGEUR_GRILLE-1)
 
-    # while liste_flotte[i][j] = 0 :
-      #  i = randint(1, HAUTEUR_GRILLE)
-        # j = randint(1, LARGEUR_GRILLE)
+    if grille[i][j] == []:
+        return i, j
 
+    else:
+        while grille[i][j] != [] :
+            i = randint(1, HAUTEUR_GRILLE)
+            j = randint(1, LARGEUR_GRILLE)
 
-    # Retourne un tuple représentent les coordonnées (x, y) du tir du joueur
     return i, j
 
 
@@ -101,19 +102,11 @@ def jeu_est_partie_terminee(flotte_1, flotte_2):
     """
 
     # Calculer la vie des flottes 1 et 2 avec la fonction flotte_calculer_vie.
-    vie_flotte_1 = {flotte_calculer_vie(flotte_1)}
-    vie_flotte_2 = {flotte_calculer_vie(flotte_2)}
+    vie_flotte_1 = flotte_calculer_vie(flotte_1)
+    vie_flotte_2 = flotte_calculer_vie(flotte_2)
 
     # Comparer la vie des flottes 1 et 2 avec un booléen.
-    if vie_flotte_1 == 0 or vie_flotte_2 == 0:
-
-        # Retourne Vrai si la partie est terminée, c'est-à-dire lorsque la vie d'une des deux flottes correspond à 0.
-        return True
-
-    else:
-
-        # Retourner Faux si la partie continue.
-        return False
+    return vie_flotte_1 == 0 or vie_flotte_2 == 0
 
 
 def jeu_afficher_vainqueur(flotte_joueur):
@@ -131,9 +124,9 @@ def jeu_afficher_vainqueur(flotte_joueur):
     if flotte_joueur == 0:
 
         # Afficher le message vainqueur de l'ordinateur contre le joueur.
-        print('C\'est l"ordinateur qui a gagné! Désolé, il faudrait se pratiquer davantage.')
+        print('C\'est l\'ordinateur qui a gagné!')
 
     else:
 
-        # Afficher le message vainqueur du joueur contre l'oridnateur.
-        print('C\'est le joueur qui a gagné. Félicitations!')
+        # Afficher le message vainqueur du joueur contre l'ordinateur.
+        print('C\'est le joueur qui a gagné!')
