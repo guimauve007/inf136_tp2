@@ -1,6 +1,6 @@
 from constantes import SYMBOLES_GRILLE
 
-# Grille de jeu
+# Constantes grille de jeu
 MUR_COIN = 6
 MUR_GAUCHE_DROIT = 4
 MUR_HAUT_BAS = 5
@@ -9,6 +9,7 @@ LARGEUR_CARACTERES = 3
 DEBUT_CHAINE = 1
 PREMIERE_LIGNE = 0
 PREMIERE_COLONNE = 0
+DECALAGE_FIN_TABLEAU = 1
 
 
 def grille_initialiser(hauteur, largeur):
@@ -28,10 +29,10 @@ def grille_initialiser(hauteur, largeur):
     ligne = [CELLULE_VIDE] * largeur
 
     # Index des lignes
-    derniere_ligne = hauteur - 1
+    derniere_ligne = hauteur - DECALAGE_FIN_TABLEAU
 
     # Index des colonnes
-    derniere_colonne = largeur - 1
+    derniere_colonne = largeur - DECALAGE_FIN_TABLEAU
 
     # Ajouter les lignes et les colonnes une par une.
     for i in range(hauteur):
@@ -86,13 +87,14 @@ def grille_afficher(grille):
     Retourne  :
         Rien.
     """
+
     grille_symboles = grille_dessiner(grille)
-    derniere_ligne = len(grille_symboles) - 1
+    derniere_ligne = len(grille_symboles) - DECALAGE_FIN_TABLEAU
     largeur_grille = int(len(grille_symboles[PREMIERE_LIGNE]) / LARGEUR_CARACTERES)
 
     # Affiche la première ligne
     print("       ", end='')
-    for i in range(DEBUT_CHAINE, largeur_grille - 1):
+    for i in range(DEBUT_CHAINE, largeur_grille - DECALAGE_FIN_TABLEAU):
         print(str(i), end='  ')
 
     # Nouvelle ligne
