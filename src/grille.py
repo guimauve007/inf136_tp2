@@ -103,7 +103,15 @@ def grille_generer_position_aleatoire(grille):
         [tuple]: Une position (i,j) aléatoire
     """
 
-    i = randint(1, (grille[0]/LARGEUR_CARACTERES)-1)
+    # Génère une valeur entre 1 et la longueur de la grille(en i) -2 pour éviter la case de la bordure.
+    # -2, car len liste est toujours à +1 des valeurs de position et pour éviter la case de bordure.
+    i = randint(1, len(grille)-2)
+
+    # Génère une valeur entre 1 et la longueur de la grille (en j) -2 pour éviter la case de la bordure.
+    # -2, car len liste est toujours à +1 des valeurs de position et pour éviter la case de bordure.
+    j = randint(1, len(grille[0])-2)
+
+    return i, j
 
 
 def grille_cellule_est_vide():
