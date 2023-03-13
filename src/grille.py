@@ -86,9 +86,9 @@ def grille_afficher(grille):
     Retourne  :
         Rien.
     """
-
-    derniere_ligne = len(grille) - 1
-    largeur_grille = int(len(grille[PREMIERE_LIGNE]) / LARGEUR_CARACTERES)
+    grille_symboles = grille_dessiner(grille)
+    derniere_ligne = len(grille_symboles) - 1
+    largeur_grille = int(len(grille_symboles[PREMIERE_LIGNE]) / LARGEUR_CARACTERES)
 
     # Affiche la première ligne
     print("       ", end='')
@@ -99,16 +99,15 @@ def grille_afficher(grille):
     print('')
 
     # Affiche le tableau
-    for i in range(len(grille)):
-        chaine_caracteres = ""
+    for i in range(len(grille_symboles)):
         if i == PREMIERE_LIGNE:
-            print('   ' + chaine_caracteres.join(grille[i]), end='\n')
+            print('   ' + grille_symboles[i], end='\n')
 
         elif i == derniere_ligne:
-            print('   ' + chaine_caracteres.join(grille[i]), end='\n')
+            print('   ' + grille_symboles[i], end='\n')
 
         else:
-            print(f'  {i}' + chaine_caracteres.join(grille[i]), end='\n')
+            print('  ' + str(i) + grille_symboles[i], end='\n')
 
 
 def grille_generer_position_aleatoire():
